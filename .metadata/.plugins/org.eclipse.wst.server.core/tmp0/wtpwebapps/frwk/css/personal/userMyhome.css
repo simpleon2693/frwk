@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* flex */
+/*포지션 정렬*/
+.u-profile__top { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: space-evenly; -ms-flex-pack: space-evenly; justify-content: space-evenly; }
+
+.u-profile__row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin: 8px 0; font-size: 18px; }
+
+.u-profile__title { width: 140px; }
+
+.u-profile__accent { color: #FF7A00; }
+
+.u-profile .accent_btn { padding: 6px 12px; margin-left: 10px; }
+
+.u-profile__btn { border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.user { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; align-items: center; }
+
+.user__l { position: relative; }
+
+.user__picture { overflow: hidden; margin-right: 28px; width: 100px; height: 100px; border-radius: 100px; -webkit-border-radius: 100px; -moz-border-radius: 100px; -ms-border-radius: 100px; -o-border-radius: 100px; }
+
+.user__picture img { width: 100%; height: 100%; -o-object-fit: contain; object-fit: contain; }
+
+.user__pic-btn { width: 36px; height: 36px; position: absolute; bottom: 0; right: 28px; z-index: 1; background: url("/img/ico_camera.png") no-repeat center #616161; background-size: 80%; border-radius: 30px; -webkit-border-radius: 30px; -moz-border-radius: 30px; -ms-border-radius: 30px; -o-border-radius: 30px; }
+
+.user__user-info p { font-size: 18px; margin-top: 10px; }
+
+.user-now { margin-top: 3rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; border-top: 1px solid #BDBDBD; }
+
+.user-now__box { width: 25.6rem; margin-top: 3rem; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; }
+
+.user-now__box:not(:last-child) { border-right: 1px solid #BDBDBD; }
+
+.user-now__num { font-size: 64px; font-weight: 700; color: #0A8FD1; }
+
+.user-now__kind { font-size: 20px; }
+
+.resume { border-top: 1px solid #BDBDBD; padding: 4rem 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.resume:last-of-type { border-bottom: 1px solid #BDBDBD; }
+
+.resume__l { width: 70%; }
+
+.resume__title { font-size: 20px; line-height: 1.2; }
+
+.resume__bottom { margin-top: 2rem; display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.resume__text { width: 33.3%; color: #616161; }
+
+.resume__text p:first-child { font-weight: 700; float: left; margin-right: 8px; }
+
+.resume__btn-wrap button { margin-left: 4px; }
+
+/*common 수정*/
+.primary_btn { width: 340px; height: 50px; font-size: 18px; display: block; margin: 0 auto; margin-top: 30px; margin-bottom: 10px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+@media (max-width: 1024px) { .u-profile__top { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .u-profile__state { margin-top: 2rem; }
+  .u-profile__btn-wrap { width: 100%; }
+  .u-profile__btn { width: 100%; margin-top: 4rem; }
+  .user-now__box { width: 25%; }
+  .user-now__num { font-size: 50px; }
+  .primary_btn { width: 100%; }
+  .resume { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .resume__l { width: 100%; margin-bottom: 2rem; }
+  .resume__text p:first-child { float: none; line-height: 1.5; }
+  .resume__btn-wrap { margin-top: 2rem; } }
+
+@media (max-width: 768px) { .user { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: 100%; padding-bottom: 3rem; border-bottom: 1px solid #BDBDBD; }
+  .user__picture { margin-right: 0; }
+  .user__pic-btn { right: 0; }
+  .user__user-info { text-align: center; margin-top: 10px; }
+  .u-profile__row { width: 100%; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; line-height: 1.5; text-align: center; }
+  .u-profile__state { width: 100%; }
+  .u-profile__title { width: 100%; }
+  .u-profile .accent_btn { margin: 10px 0 20px 0; }
+  .user-now { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .user-now__box { width: 50%; }
+  .user-now__box:not(:last-child) { border: 0; }
+  .user-now__box:nth-of-type(2n) { border-left: 1px solid #BDBDBD; }
+  .resume__bottom { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .resume__text { width: 100%; margin: 1rem 0; } }

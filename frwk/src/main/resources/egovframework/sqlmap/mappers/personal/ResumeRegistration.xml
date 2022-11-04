@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.focu.frwk.personal.resume.service.mapper.ResumeRegistrationMapper">
+    <parameterMap id="resumeRegistrationDTO" type="kr.or.focu.frwk.personal.resume.service.ResumeRegistrationDTO" />
+	<resultMap id="resumeRegistrationDTO" type="kr.or.focu.frwk.personal.resume.service.ResumeRegistrationDTO" />
+    
+    <select id="selectMyResumeList" resultType="camelMap" parameterMap="resumeRegistrationDTO">
+    	<![CDATA[
+        SELECT *
+        FROM
+            (
+		    	SELECT /*+ INDEX_DESC(T1 PK1) */
+		    	 ROWNUM AS RNUM, RSU_SEQ, RSU_SJT, TO_CHAR(MODI_DT,'YYYY-MM-DD') AS MODI_DT, TO_CHAR(REG_DT,'YYYY-MM-DD') AS REG_DT
+		    	FROM FRWK.RSU_INFO T1
+		    	WHERE PSN_ID = #{psnId}
+		    	AND ROWNUM <= #{endRow}
+		     )
+        WHERE
+        #{startRow} <= RNUM
+        ]]>
+    </select>
+    
+     <select id="selectMyResumeListCnt" resultType="Integer" parameterMap="resumeRegistrationDTO">
+    	SELECT
+    		COUNT(*)
+    	FROM FRWK.RSU_INFO
+    	WHERE PSN_ID = #{psnId}
+    </select>
+    
+    <select id="selectPsnInfo" resultMap="resumeRegistrationDTO" resultType="camelMap" parameterType="String">
+         SELECT
+         	  PSN_ID, PWD, NM, PHN, BIRTHDD, SEX,
+		       EMAIL, ZIPCD, ADDR, DETL_ADDR, CERTI_YN,
+		       CERTI_FNM, CERTI_DT, APV_DT, EXPIR_DT, MODI_DT,
+		       PSN_PIC_FPATH, PSN_PIC_CRCT_FNM,
+		       PSN_PIC_FNM, CERTI_CRCT_FNM, CERTI_CRCT_FPATH
+		FROM FRWK.PSN_MEM 
+        WHERE PSN_ID = #{userId} 	   
+    </select>
+    
+    <select id="selectWrittenPsnInfo" resultType="camelMap" parameterMap="resumeRegistrationDTO">
+    	SELECT 
+    		A.PSN_ID, A.NM, A.PHN, A.BIRTHDD, A.SEX, A.EMAIL, A.ZIPCD, A.ADDR, A.DETL_ADDR, A.CERTI_YN, A.CERTI_FNM, A.CERTI_DT,
+    		A.APV_DT, A.EXPIR_DT, A.PSN_PIC_FPATH, A.PSN_PIC_FNM, A.PSN_PIC_CRCT_FNM, A.CERTI_CRCT_FNM, A.CERTI_CRCT_FPATH,
+    		B.RSU_SEQ, B.RSU_PUBI_YN, B.PHN_PUBI_YN, B.PIC_FNM, B.HPAGE_ADDR, B.RSU_SJT, B.EMP_CDT_CD, B.DESLY, B.ITV_DECI_YN, B.DESLY_WKPL,
+    		B.JOB_LIST, B.INDU_LIST, B.REPA_YN, B.FNEMP_YN, B.FIPIN_YN, B.DISAB_GRD_CD, B.MISVC_CD, B.JNARMY_DD, B.EXPARMY_DD, B.CLS_CD,
+    		B.SLFINTRO, B.REG_DT, B.MODI_DT, B.SAVE_YN
+    	FROM
+    		FRWK.PSN_MEM A INNER JOIN FRWK.RSU_INFO B 
+    	ON
+    		A.PSN_ID = B.PSN_ID
+    	WHERE
+    		B.RSU_SEQ = #{rsuSeq}
+    </select>
+    
+    <select id="selectWrittenLicenseInfo" resultType="camelMap" parameterMap="resumeRegistrationDTO">
+		SELECT
+			LICENSE_SEQ , LICEN_NM, PUCO, ACQ_YM PASS_CD
+		FROM
+			FRWK.LICENSE
+		WHERE
+			RSU_SEQ = #{rsuSeq}    	
+    </select>
+    
+    
+    <insert id="insertRsuInfo" parameterMap="resumeRegistrationDTO">
+    	INSERT INTO RSU_INFO
+    		(
+    			RSU_SEQ, PSN_ID, RSU_SJT, RSU_PUBI_YN, PHN_PUBI_YN, HPAGE_ADDR, REPA_YN, FNEMP_YN,
+    			FIPIN_YN, DISAB_GRD_CD, MISVC_CD, JNARMY_DD, EXPARMY_DD, CLS_CD, SLFINTRO, REG_DT,
+    			MODI_DT
+    		)
+    	VALUES
+    		(
+    			SEQ_RSU.NEXTVAL, #{psnId}, #{rsuSjt}, #{rsuPubiYn}, #{phnPubiYn}, #{hpageAddr},
+    			#{repaYn}, #{fnempYn}, #{fipinYn}, #{disabGrdCd}, #{misvcCd}, #{jnarmyDd}, #{exparmyDd}, #{clsCd}, #{slfintro}, SYSTIMESTAMP,
+    			SYSTIMESTAMP
+    		)
+    </insert>
+    
+    <insert id="insertAcabkg" parameterMap="resumeRegistrationDTO">
+    	INSERT INTO ACABKG
+    		(RSU_SEQ, ACABKG_SEQ, ACABKG_CD, ACABKG_STA_CD, SCH_NM, MAJOR, ENROL_YR, GRAD_YR)
+    	VALUES
+    		(SEQ_RSU.CURRVAL, SEQ_ACABKG.NEXTVAL, #{acabkgCd}, #{acabkgStaCd}, #{schNm}, #{major}, #{enrolYr}, #{gradYr})
+    </insert>
+    
+    <insert id="insertWkexp" parameterMap="resumeRegistrationDTO">
+    	INSERT INTO WKEXP
+    		(RSU_SEQ, WKEXP_SEQ, WKEXP_CD, CMP_NM, WK_TP_CD, JOB, SLY, JNCMP_DD, LVCMP_DD, RESP_JOB , JOB_LIST)
+    	VALUES
+    		(SEQ_RSU.CURRVAL, SEQ_WKEXP.NEXTVAL, #{wkexpCd}, #{cmpNm}, #{wkTpCd}, #{job}, #{sly}, #{jncmpDd}, #{lvcmpDd}, #{respJob}, #{jobList})
+    </insert>
+    
+    <insert id="insertLicense" parameterMap="resumeRegistrationDTO">
+    	INSERT INTO LICENSE
+    		(RSU_SEQ, LICENSE_SEQ, LICEN_NM, PUCO, ACQ_YM, PASS_CD)
+    	VALUES
+    		(SEQ_RSU.CURRVAL, SEQ_LICENSE.NEXTVAL, #{licenNm}, #{puco}, #{acqYm}, #{passCd})
+    </insert>
+    
+    <insert id="insertAwaEdu" parameterMap="resumeRegistrationDTO">
+		INSERT INTO AWA_EDU
+			(RSU_SEQ, AWA_EDU_SEQ, ACTI_CD, START_YM, END_YM, LICEN_NM, ACTI_CONTS)
+		VALUES
+			(SEQ_RSU.CURRVAL, SEQ_AWAEDU.NEXTVAL, #{actiCd}, #{startYm}, #{endYm}, #{licenNm}, #{actiConts})    
+    </insert>
+    
+    <insert id="insertOvsExp" parameterMap="resumeRegistrationDTO">
+    	INSERT INTO OVS_EXP
+    		(RSU_SEQ, OVS_EXP_SEQ, COU_NM, START_YM, END_YM, CONTS)
+    	VALUES
+    		(SEQ_RSU.CURRVAL, SEQ_OVSEXP.NEXTVAL, #{couNm}, #{ovsExpStartYm}, #{ovsExpEndYm}, #{ovsExpConts})
+    </insert>
+    
+    <insert id="insertLanguage" parameterMap="resumeRegistrationDTO">
+		INSERT INTO LANGUAGE
+			(RSU_SEQ, LANGUAGE_SEQ, LANG_TP_CD, LANG_CD, CPAC_CD)
+		VALUES
+			(SEQ_RSU.CURRVAL, SEQ_LANGUAGE.NEXTVAL, #{langTpCd}, #{langCd}, #{cpacCd})    
+    </insert>
+    
+   	<insert id="insertPortfo" parameterMap="resumeRegistrationDTO">
+   		INSERT INTO PORTFO
+   			(RSU_SEQ, PORTFO_SEQ, CLASSFI_CD, FNM, CRCT_FNM, FPATH)
+   		VALUES
+   			(SEQ_RSU.CURRVAL, SEQ_PORTFO.NEXTVAL, #{classfiCd}, #{portfoFnm} , #{portfoCrctFnm}, #{portfoFpath})
+   	</insert> 
+</mapper>

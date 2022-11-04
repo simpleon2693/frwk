@@ -1,0 +1,6 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/frwk/src/main/resources/egovframework/spring/context-aspect.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/frwk/src/main/resources/egovframework/spring/context-datasource.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/frwk/src/main/resources/egovframework/spring/context-properties.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/frwk/src/main/resources/egovframework/spring/context-transaction.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/frwk/src/main/webapp/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+eclipse.preferences.version=1

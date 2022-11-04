@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.focu.frwk.auth.service.mapper.AuthMapper">
+
+	<select id="getPersonalUser" resultType="hashmap" >
+		SELECT
+		       PSN_ID, PWD, NM, PHN, BIRTHDD, SEX,
+		       EMAIL, ZIPCD, ADDR, DETL_ADDR, CERTI_YN,
+		       CERTI_FNM, CERTI_DT, APV_DT, EXPIR_DT, MODI_DT,
+		       PSN_PIC_FPATH, PSN_PIC_CRCT_FNM,
+		       PSN_PIC_FNM, CERTI_CRCT_FNM, CERTI_CRCT_FPATH
+		FROM FRWK.PSN_MEM
+		WHERE PSN_ID = #{userId} and PWD = #{userPw}
+	</select>
+	<select id="getSnsUser" resultType="hashmap" >
+		SELECT
+			PSN_ID, PWD, NM, PHN, BIRTHDD, SEX,
+			EMAIL, ZIPCD, ADDR, DETL_ADDR, CERTI_YN,
+			CERTI_FNM, CERTI_DT, APV_DT, EXPIR_DT, MODI_DT,
+			PSN_PIC_FPATH, PSN_PIC_CRCT_FNM,
+			PSN_PIC_FNM, CERTI_CRCT_FNM, CERTI_CRCT_FPATH, SNS_PRVD
+		FROM FRWK.PSN_MEM
+		WHERE PSN_ID = #{userId} and SNS_PRVD = #{providerType}
+	</select>
+	<select id="getCompanyUser" resultType="hashmap" >
+		SELECT COM_ID, PWD, COM_REG_NUM, COM_NM, CEO_NM, ZIPCD, ADDR, DETL_ADDR, COM_CERTI_YN, COM_CERTI_FNM, EXPIRDD_CD, COM_LVL, SRCH_PNT, REG_DT, MODI_DT
+		FROM FRWK.COM_MEM
+		WHERE COM_ID = #{userId} and PWD = #{userPw}
+	</select>
+	<insert id="insertSnsUser" >
+		INSERT INTO FRWK.PSN_MEM
+		(PSN_ID, SNS_PRVD, MODI_DT)
+		VALUES(#{userId}, #{providerType}, SYSDATE);
+	</insert>
+
+<!--	<select id="selectSampleListTotCnt" parameterType="searchVO" resultType="int">-->
+
+<!--			SELECT COUNT(*) totcnt-->
+<!--			FROM SAMPLE-->
+<!--			WHERE 1=1-->
+<!--			<if test="searchKeyword != null and searchKeyword != ''">-->
+<!--		        <choose>-->
+<!--		            <when test="searchCondition == 0">-->
+<!--						AND ID LIKE '%' || #{searchKeyword} || '%'-->
+<!--					</when>-->
+<!--		            <when test="searchCondition == 1">-->
+<!--						AND	NAME LIKE '%' || #{searchKeyword} || '%'-->
+<!--					</when>-->
+<!--				</choose>-->
+<!--			</if>-->
+<!--	</select>-->
+
+</mapper>

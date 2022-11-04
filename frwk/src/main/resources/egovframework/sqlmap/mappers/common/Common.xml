@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.focu.frwk.common.service.mapper.CommonMapper">
+    <select id="getBigCode" resultType="camelMap">
+        SELECT
+               BIG_CLASS_CD, BIG_CLASS_NM, BIG_CLASS_DETL
+        FROM FRWK.BIG_CLASS
+        WHERE CLASS_TP = #{classType}
+    </select>
+    <select id="getMidCode" resultType="camelMap">
+        SELECT MID_CLASS_CD, BIG_CLASS_CD, MID_CLASS_NM, MID_CLASS_DETL
+        FROM FRWK.MID_CLASS
+        WHERE BIG_CLASS_CD = #{bigCode}
+    </select>
+    <select id="getSubCode" resultType="camelMap">
+        SELECT SUB_CLASS_CD, BIG_CLASS_DETL, MID_CLASS_DETL, SUB_CLASS_NM, SUB_CLASS_DETL
+        FROM FRWK.SUB_CLASS SC
+                 INNER JOIN BIG_CLASS BC ON SC.BIG_CLASS_CD = BC.BIG_CLASS_CD
+                 INNER JOIN MID_CLASS MC ON SC.MID_CLASS_CD = MC.MID_CLASS_CD
+        WHERE SC.MID_CLASS_CD = #{midCode}
+    </select>
+    <select id="getCommonCode" resultType="camelMap">
+    SELECT CD_SEQ, CD, CD_USE_TP, CD_NM, DETL_CD, DETL_CD_NM
+    FROM FRWK.COMM_CODE
+    WHERE CD = #{commonCode}
+    </select>
+
+</mapper>

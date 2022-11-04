@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/* flex */
+/*포지션 정렬*/
+.divide { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.page-nav { display: block; border: 1px solid #BDBDBD; background-color: #ffffff; width: 24%; height: 750px; padding: 3rem 0; position: -webkit-sticky; position: sticky; top: 302px; }
+
+.page-nav__title { margin-bottom: 20px; padding-left: 3rem; }
+
+.page-nav nav li { font-size: 1.8rem; padding: 14px 0; padding-left: 3rem; }
+
+.page-nav nav li:hover { background-color: #F1F9F7; color: #00382D; }
+
+.page-nav .primary_btn, .page-nav .primary_btn_line { width: calc(100% - 6rem); margin: 0 3rem; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.page-nav .primary_btn_line { margin-top: 5rem; margin-bottom: 1rem; }
+
+.contents { width: calc(76% - 16px); }
+
+.contents .cont { margin-bottom: 4rem; }
+
+.contents .box__top { margin-bottom: 2.4rem; }
+
+.contents .box__title--color { color: #00C49D; }
+
+.contents .box__notice::after { content: attr(data-notice); font-size: 14px; font-weight: 400; color: #FF7A00; margin-left: 10px; }
+
+.contents .row { margin: 14px 0; }
+
+.contents .label { display: inline-block; width: 130px; line-height: 40px; }
+
+.contents .w-100 { width: calc(100% - 3rem); }
+
+.contents .w-100-label { width: calc(100% - 3rem - 134px); }
+
+.contents .w-150 { width: 150px; }
+
+.contents .w-279 { width: 279px; }
+
+.contents .w-314 { width: 314px; }
+
+.contents .w-360 { width: 360px; }
+
+.contents .w-477 { width: 477px; }
+
+.contents .w-497 { width: 497px; }
+
+.contents .w-507 { width: 507px; }
+
+.contents .w-701 { width: 701px; }
+
+.contents .h-120 { height: 120px; }
+
+.contents .double-input { margin-top: 14px; margin-left: 134px; }
+
+.contents .w-file { width: 360px; margin-top: 0; margin-left: 134px; position: relative; }
+
+.contents .add-input { position: relative; }
+
+.contents .add-btn { cursor: pointer; position: absolute; right: 1rem; top: 60%; transform: translateY(-50%); -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); }
+
+.contents .submit_btn { margin-left: 10px; }
+
+.contents .ml-10 { margin-left: 10px; }
+
+.contents .check { display: inline-block; margin-top: 14px; }
+
+.contents .check__item { float: left; }
+
+.contents .check__item:not(:first-child) { margin-left: 4rem; }
+
+.contents .check__item p { display: inline-block; margin-left: 4px; line-height: 20px; vertical-align: text-top; }
+
+.contents .divide { height: auto; }
+
+.contents .outlink { width: calc(100% - 130px); float: right; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.contents .outlink__text { width: auto; font-size: 14px; line-height: 1.5; color: #FF7A00; }
+
+.contents .outlink__btn { width: 186px; height: 50px; background-color: #FF7A00; color: #ffffff; font-size: 14px; cursor: pointer; }
+
+.contents .picture { width: 143px; height: 190px; border: 1px solid #BDBDBD; padding: 1.2rem; position: relative; cursor: pointer; }
+
+.contents .picture__upload { width: 100%; height: 100%; background-color: #BDBDBD; }
+
+.contents .picture__btn { width: 40px; height: 40px; position: absolute; right: 0; bottom: 0; background: url("/img/ico_upload-pic.png") no-repeat center, #616161; background-size: 28px; }
+
+.contents .info { width: 80%; }
+
+.contents .state_ssucceed { display: inline-block; width: calc(100% - 3rem - 134px); color: #FF7A00; font-weight: 700; }
+
+.contents .state_failed { display: inline-block; width: calc(100% - 3rem - 134px); color: #616161; font-weight: 700; }
+
+.contents .add_btn { width: 100%; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.pop-up { display: none; width: 100%; height: 100%; position: fixed; z-index: 12; top: 0; left: 0; background-color: rgba(33, 33, 33, 0.4); }
+
+.pop-up__area { width: 1000px; height: auto; padding: 3rem; background-color: #ffffff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
+
+.pop-up__top { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.pop-up .search-bar { width: 400px; }
+
+.pop-up .pop-up-bar { width: 100%; }
+
+.pop-up .pop-up-bar__textbar { width: calc(100% - 30px - 100px); border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.pop-up .pop-up-bar .primary_btn { height: 41px; width: 100px; position: absolute; top: 0; right: 0; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.pop-up__cont { padding: 14px 0; }
+
+.pop-up__cont .list-wrap { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.pop-up__result { width: 100%; background-color: #BDBDBD; }
+
+.pop-up__btns { text-align: center; }
+
+.pop-up__btns .gray_btn_line, .pop-up__btns .primary_btn { width: calc(50% - 10px); margin: 4px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.pop-up .upload-pic { display: none; width: 500px; }
+
+.pop-up .upload-pic .top-area { border-bottom: 1px solid #BDBDBD; padding-bottom: 3rem; }
+
+.pop-up .upload-pic .top-area p { line-height: 1.4; font-size: 14px; }
+
+.pop-up .upload-pic .pop-up__cont { display: -webkit-box; display: -ms-flexbox; display: flex; padding: 3rem 0; }
+
+.pop-up .upload-pic .pop-up__cont .left { width: calc(55% - 10px); }
+
+.pop-up .upload-pic .pop-up__cont .left div { width: 100%; min-height: 250px; /* border: 1px solid #BDBDBD; padding: 2rem; */ text-align: center; }
+
+.pop-up .upload-pic .pop-up__cont .right { width: calc(45% - 10px); }
+
+.pop-up .upload-pic .pop-up__cont .right div { width: 152px; height: 180px; /* padding: 8px; border: 1px solid #BDBDBD; */ }
+
+.pop-up .upload-pic .pop-up__cont .arrow { margin: 20px; -o-object-fit: contain; object-fit: contain; }
+
+.pop-up .upload-pic .pop-up__cont p { margin-bottom: 10px; }
+
+/* 프로필 크롭기능추가로 인해 css 추가 */
+.cropper-view-box { outline:1px dashed #39f; height: 170px; border: none; }
+
+.cropper-crop-box { padding: 0; border: none !important; height: auto; } 
+
+.resumeProfileArea { position: relative;  border: 1px solid #BDBDBD; }
+
+.resumeProfileArea div { position:absolute; top:0; left:0; width:100%; height:100%;  padding: 0; }
+
+/* 김영지  추가 */
+.makeTransparent {opacity:0;}
+.makeDisplayNone {display:none;}
+
+@media (max-width: 1024px) { .page-nav { display: none; }
+  .box__top .box__title { width: 100%; }
+  .contents { width: 100%; }
+  .contents .box__top .check { width: 180px; }
+  .contents .divide { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .contents .info { width: 100%; }
+  .contents .check, .contents .w-100, .contents .w-100-label, .contents .w-360, .contents .w-314, .contents .w-477, .contents .w-507, .contents .w-701, .contents .w-279, .contents .w-150 { width: calc(100% - 3rem); }
+  .contents .double-input { margin-left: 0; }
+  .contents .ml-10 { margin-left: 0; margin: 14px 0; }
+  .contents .mb-0 { margin-bottom: 0; }
+  .contents .mb-10 { margin-bottom: 10px; }
+  .contents .w-file { width: calc(100% - 300px); } }
+
+@media (max-width: 768px) { .contents .primary_btn_line { padding: 10px; }
+  .contents .box__top .check { width: 230px; }
+  .contents .box__notice::after { display: block; margin-left: 0; margin-top: 10px; }
+  .contents .check__item { width: 100%; padding: 10px 0; }
+  .contents .check__item:not(:first-child) { margin-left: 0; }
+  .contents .ml-10 { margin-left: 0; }
+  .contents .w-file { width: calc(100% - 160px); }
+  .contents .submit_btn { margin-left: 130px; margin-top: 10px; }
+  .contents .outlink { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .contents .outlink__btn { margin-top: 10px; width: 100%; }
+  .pop-up .upload-pic { width: calc(100% - 3rem); } }

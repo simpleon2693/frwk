@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* flex */
+/*포지션 정렬*/
+.divide { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.page-nav { display: block; border: 1px solid #BDBDBD; background-color: #ffffff; width: 24%; height: 286px; padding: 3rem 0; position: -webkit-sticky; position: sticky; top: 302px; }
+
+.page-nav__title { margin-bottom: 20px; padding-left: 3rem; }
+
+.page-nav nav li { font-size: 1.8rem; padding: 14px 0; padding-left: 3rem; }
+
+.page-nav nav li:hover { background-color: #F1F9F7; color: #00382D; }
+
+.page-nav .primary_btn, .page-nav .primary_btn_line { width: calc(100% - 6rem); margin: 0 3rem; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.page-nav .primary_btn_line { margin-top: 5rem; margin-bottom: 1rem; }
+
+.contents { width: calc(76% - 16px); }
+
+.contents .box__top { margin-bottom: 2.4rem; }
+
+.contents .box__title--color { color: #00C49D; }
+
+.contents .box__notice::after { content: attr(data-notice); font-size: 14px; font-weight: 400; color: #FF7A00; margin-left: 10px; }
+
+.tab { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; margin-bottom: 34px; border-bottom: 1px solid #BDBDBD; cursor: pointer; }
+
+.tab__item { width: 200px; height: 50px; font-size: 18px; line-height: 50px; text-align: center; background-color: #D9D9D9; }
+
+.tab .active { background-color: #ffffff; border: 1px solid #BDBDBD; border-bottom: 0; }
+
+.cont .row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin-bottom: 10px; }
+
+.cont .row .list-btn button { font-size: 16px; cursor: pointer; }
+
+.cont .state-list { width: 100%; border: 1px solid #BDBDBD; margin-top: 14px; }
+
+.cont .state-list__top { height: 54px; background-color: #EEEEEE; padding: 0 2rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.cont .state-list__top .btn-wrap button { width: 100px; height: 34px; background-color: #757575; color: #ffffff; cursor: pointer; }
+
+.cont .state-list__top .btn-wrap button:hover { background-color: #424242; }
+
+.cont .state-list__bottom { padding: 3rem 2rem; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.cont .state-list__bottom .list-title { padding-bottom: 1rem; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.cont .state-list__bottom .list-title h3 { line-height: 1.2; }
+
+.cont .state-list__bottom .list-title .is-ing { padding: 8px 22px; margin-left: 6px; font-size: 16px; background-color: #FFE2C8; color: #FF7A00; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -ms-border-radius: 20px; -o-border-radius: 20px; }
+
+.cont .state-list__bottom .left { width: 50%; }
+
+.cont .state-list__bottom .left .info { line-height: 1.5; width: 100%; font-weight: 600; }
+
+.cont .state-list__bottom .left .info__title { font-weight: 400; margin-top: 10px; }
+
+.cont .state-list__bottom .right { width: 50%; }
+
+.cont .state-list__bottom .right .state-notice { font-size: 3rem; width: 60px; height: 60px; position: relative; margin: 0 10px; border: 3px solid #00C49D; border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; }
+
+.cont .state-list__bottom .right .state-notice::after { content: attr(data-title); font-size: 14px; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%); }
+
+.pagenation { margin-top: 30px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+.pagenation__num { width: 32px; height: 32px; border: 1px solid #BDBDBD; color: #757575; font-size: 16px; margin: 0 2px; cursor: pointer; }
+
+.pagenation .forward { background: url("../img/btn_forward.png") no-repeat center; }
+
+.pagenation .pre { background: url("../img/btn_pre.png") no-repeat center; }
+
+.pagenation .next { background: url("../img/btn_next.png") no-repeat center; }
+
+.pagenation .backward { background: url("../img/btn_backward.png") no-repeat center; }
+
+@media (max-width: 1024px) { .page-nav { display: none; }
+  .box__top .box__title { width: 100%; }
+  .contents { width: 100%; }
+  .contents .state-list__top { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; height: auto; padding: 2rem; }
+  .contents .state-list__top p { margin-bottom: 16px; }
+  .contents .state-list__top button { margin: 0.6rem 0; }
+  .contents .state-list__bottom .left { width: 100%; }
+  .contents .state-list__bottom .right { width: 100%; }
+  .contents .state-list__bottom .right .state-notice { margin: 3rem 1rem; } }
+
+@media (max-width: 768px) { .tab { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; padding-bottom: 20px; }
+  .tab__item { width: 100%; margin-bottom: 10px; border: 1px solid #BDBDBD; }
+  .tab .active { border-bottom: 1px solid #BDBDBD; }
+  .contents { width: 100%; }
+  .contents .cont .row { -webkit-box-orient: vertical; -webkit-box-direction: reverse; -ms-flex-direction: column-reverse; flex-direction: column-reverse; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+  .contents .cont .row .list-btn { margin-top: 10px; }
+  .contents .state-list__top .btn-wrap { width: 100%; }
+  .contents .state-list__top .btn-wrap button { width: 49.2%; }
+  .contents .state-list__bottom .left { width: 100%; }
+  .contents .state-list__bottom .right { width: 100%; }
+  .contents .state-list__bottom .right .state-notice { margin: 3rem 1rem; } }

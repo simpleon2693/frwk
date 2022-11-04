@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* flex */
+/*포지션 정렬*/
+.w-600 { width: 600px; }
+
+.w-600 input[type=text] { width: calc(100% - 30px); margin-bottom: 10px; }
+
+.tab { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; margin-bottom: 34px; cursor: pointer; }
+
+.tab__item { width: 50%; height: 50px; font-size: 18px; line-height: 50px; text-align: center; background-color: #D9D9D9; }
+
+.tab .active { background-color: #ffffff; border: 1px solid #BDBDBD; border-bottom: 0; }
+
+.check_area { width: 100%; height: auto; border: 1px solid #BDBDBD; background-color: #ffffff; padding: 2rem; }
+
+.check_area__flex { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.check_area__flex .check p { min-width: auto; }
+
+.check_area .check { padding: 1rem 0; width: 100%; }
+
+.check { display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.check p { margin-left: 4px; min-width: 13rem; line-height: 1.5; }
+
+.check__red { color: #FA4246; font-weight: 700; margin-right: 4px; }
+
+.check__detail { margin-left: auto; padding: 6px 12px; font-size: 14px; }
+
+.social { width: 100%; text-align: center; padding-bottom: 24px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+.social__btn { -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25); box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25); cursor: pointer; margin: 0 3rem; position: relative; min-width: 56px; min-height: 56px; border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; }
+
+.social__btn::after { content: attr(data-name); display: block; width: 100px; position: absolute; bottom: -24px; right: 50%; transform: translateX(50%); -webkit-transform: translateX(50%); -moz-transform: translateX(50%); -ms-transform: translateX(50%); -o-transform: translateX(50%); }
+
+.social .naver { background: url("../img/btn_naver.png") no-repeat center; }
+
+.social .kakao { background: url("../img/btn_kakao.png") no-repeat center; }
+
+.social .google { background: url("../img/btn_google.png") no-repeat center; }
+
+.put_text { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100%; }
+
+.put_text .title { width: 150px; }
+
+.put_text .emphasis::before { content: "*"; font-size: 20px; color: #FA4246; margin-right: 4px; }
+
+.put_text input[type=text], .put_text .include, .put_text .add_text { margin-bottom: 0; width: calc(100% - 110px); }
+
+.put_text .w-radio { min-width: 80px; }
+
+.put_text .add_text > input { width: 100%; margin-top: 10px; }
+
+.put_text .include { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.put_text .flex_left { -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; }
+
+.put_text .email:first-child { width: 42%; }
+
+.put_text .email:nth-child(2) { width: 4%; text-align: center; }
+
+.put_text .email:last-child { width: 52%; }
+
+.put_text .info_text { width: 70%; line-height: 1.5; }
+
+.put_text .check_btns .check { width: 33.3%; }
+
+.notice_text { padding-left: 140px; font-size: 14px; margin-top: 10px; }
+
+.notice_text span { color: #FF7A00; }
+
+.notice_text__warnning { color: #FA4246; }
+
+.orange_btn { margin-left: 140px; width: calc(100% - 140px); margin-top: 16px; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.join__row { margin-top: 3.6rem; }
+
+.join__title { margin-bottom: 2.6rem; font-size: 2.2rem; }
+
+.join__title::after { content: attr(data-text); display: inline-block; float: right; font-size: 16px; color: #FA4246; vertical-align: middle; font-weight: 400; }
+
+.join__btns { display: -webkit-box; display: -ms-flexbox; display: flex; gap: 10px; }
+
+.join__btns .primary_btn, .join__btns .primary_btn_line { width: calc(50% - 10px); margin: 0; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.join__btns .accent_btn { padding: 1rem 2.4rem; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; }
+
+.join__btns .w-100 { width: 100%; }
+
+.flex_c { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: space-evenly; -ms-flex-pack: space-evenly; justify-content: space-evenly; }
+
+.finishied { text-align: center; line-height: 1.5; }
+
+.finishied__thin { font-weight: 400; }
+
+.finishied__accent { font-weight: 700; color: #FF7A00; }
+
+.finishied__mt-40 { margin-top: 4rem; }
+
+.company .login-sub { margin-top: 50px; }
+
+@media (max-width: 1024px) { .put_text { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+  .put_text .title { margin-bottom: 10px; }
+  .put_text input[type=text], .put_text .include, .put_text .add_text { width: 100%; }
+  .put_text .include input { margin-right: 10px; }
+  .put_text .include .email:first-child { margin-right: 0; }
+  .put_text .info_text { width: 100%; }
+  .notice_text { padding-left: 0; }
+  .orange_btn { margin-left: 0; width: 100%; }
+  .join__btns { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .join__btns .primary_btn, .join__btns .primary_btn_line { width: 100%; }
+  .join__btns .accent_btn { width: 100%; margin-top: 16px; } }
+
+@media (max-width: 768px) { .put_text .check_btns { margin-top: 10px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; gap: 16px; }
+  .put_text .check_btns .check { width: 100%; } }

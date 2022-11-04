@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.focu.frwk.company.jobopen.service.mapper.JobOpenMapper">
+    <insert id="insertJobOpen">
+        INSERT INTO FRWK.JOB_OPEN
+        (JOB_OPEN_SEQ, TITLE, COM_ID, MNGER_NM,
+         DEPT, PHN, EMAIL, BSTT_CD, BSTT_CD_NM,
+         ADDR, DETL_ADDR,
+         OPEN_START_DT, OPEN_END_DT,OPEN_END_TM,
+         OPEN_YN, REG_DT, REG_ID, MODI_DT, MODI_ID)
+        VALUES
+            (FRWK.SEQ_JOB_OPEN.NEXTVAL, #{title}, #{comId}, #{mngerNm},
+             #{dept}, #{phone}, #{email}, #{bsttCd}, #{bsttCdNm},
+             #{addr}, #{detlAddr},
+             TO_DATE(#{openStartDt},'YYYY-MM-DD'), TO_DATE(#{openEndDt},'YYYY-MM-DD'), TO_TIME(#{openEndTm},'HH24MI'),
+             #{openYn}, SYSDATE, #{regId}, SYSDATE, #{modiId});
+    </insert>
+    <insert id="insertJobArea">
+        <selectKey keyProperty="jobOpenSeq" resultType="integer" order="BEFORE">
+            SELECT FRWK.SEQ_JOB_OPEN.CURRVAL FROM DUAL
+        </selectKey>
+        INSERT INTO FRWK.JOB_AREA
+        (JOB_AREA_SEQ, JOB_OPEN_SEQ, JOB_LIST, RECI_AREA, RET_FRMAN_CD,
+        WKEXP_CD, EMP_TP_LIST, RECU_NUM_CD, RECU_NUM, WH_FUL_CLOSE
+        JOB_CD, JOB_LIST_NM, JOB_CD_NM)
+        VALUES(
+        SEQ_JOB_AREA.NEXTVAL, #{jobOpenSeq}, #{jobList}, #{reciArea}, #{retFrmanCd},
+        #{wkexpCd}, #{empTpList}, #{recNumCd}, #{recNum}, #{whenFullClose}
+        #{jobCd}, #{jobListNm}, #{jobCdNm}
+        );
+    </insert>
+
+    <insert id="insertQualification">
+        <selectKey keyProperty="jobOpenSeq" resultType="integer" order="BEFORE">
+            SELECT FRWK.SEQ_JOB_OPEN.CURRVAL FROM DUAL
+        </selectKey>
+        INSERT INTO FRWK.ENROL_QUALI
+        (ENROL_QUALI_SEQ, JOB_OPEN_SEQ, ACABKG_CD, SEX_CD, AGE_CD,
+        OVER_AGE, UNDER_AGE, CONDI_LIST, LANG_LIST, LICEN_LIST, JOB_LIST)
+        VALUES( SEQ_ENROL_QUALI.NEXTVAL, #{jobOpenSeq}, #{acabkgCd}, #{sexCd}, #{ageCd},
+        #{overAge}, #{underAge}, #{condiList}, #{langList}, #{licenList}, #{jobList});
+    </insert>
+
+    <insert id="insertWorkCondition">
+        <selectKey keyProperty="jobOpenSeq" resultType="integer" order="BEFORE">
+            SELECT FRWK.SEQ_JOB_OPEN.CURRVAL FROM DUAL
+        </selectKey>
+        INSERT INTO FRWK.WORK_COND
+        (WORK_COND_SEQ, JOB_OPEN_SEQ, SAL_CD, MIN_SAL,
+        MAX_SAL, SAL_DECI_AFTR_INV, WORK_PLACE, WORK_ADDR,
+        SUBW_LINE_CD, SUBW_NM_CD, GATE_NUM, DIST_CD, WALFARE)
+        VALUES(SEQ_WORK_COND.NEXTVAL, #{jobOpenSeq}, #{salCd}, #{minSal},
+        #{maxSal}, #{jobOpenSeq}, #{workPlace}, #{workAddr},
+        #{subwLineCd}, #{subwNmCd}, #{gateNum}, #{distCd}, #{walfare});
+    </insert>
+
+    <select id="getJobopenList" resultType="camelMap">
+
+        SELECT JOB_OPEN_SEQ, COM_ID, MNGER_NM, DEPT, PHN, EMAIL,
+               BSTT_CD, OVS_YN, WKHOME_YN, ADDR, DETL_ADDR, OPEN_START_DT, OPEN_END_DT,
+               OPEN_YN, REG_DT, REG_ID, MODI_DT, MODI_ID,
+               TITLE, OPEN_END_TM, BSTT_CD_NM
+        FROM FRWK.JOB_OPEN
+        WHERE COM_ID = #{comId}
+        order by JOB_OPEN_SEQ desc;
+    </select>
+    <select id="getJobopenListPaging" resultType="camelMap">
+        <![CDATA[
+        SELECT *
+        FROM
+            (
+                SELECT /*+ INDEX_DESC(T1 PK1) */
+                       ROWNUM AS RNUM, JOB_OPEN_SEQ, COM_ID, MNGER_NM, DEPT, PHN, EMAIL,
+                       BSTT_CD, OVS_YN, WKHOME_YN, ADDR, DETL_ADDR, OPEN_START_DT, OPEN_END_DT,
+                       OPEN_YN, REG_DT, REG_ID, MODI_DT, MODI_ID,
+                       TITLE, OPEN_END_TM, BSTT_CD_NM
+                FROM FRWK.JOB_OPEN T1
+                WHERE COM_ID = #{comId}
+                AND ROWNUM <= #{endRow}
+        )
+        WHERE
+        #{startRow} <= RNUM
+        ]]>
+    </select>
+    <select id="getJobOpenData" resultType="camelMap">
+        SELECT
+            jo.JOB_OPEN_SEQ, COM_ID, MNGER_NM, DEPT, PHN, EMAIL, BSTT_CD, OVS_YN, WKHOME_YN, ADDR, DETL_ADDR, OPEN_START_DT, OPEN_END_DT,
+            OPEN_YN, REG_DT, REG_ID, MODI_DT, MODI_ID, TITLE, OPEN_END_TM, BSTT_CD_NM,
+            ja.JOB_LIST, RECI_AREA, RET_FRMAN_CD, WKEXP_CD, EMP_TP_LIST, RECU_NUM_CD, RECU_NUM, JOB_CD, JOB_AREA_SEQ, WH_FUL_CLOSE, JOB_LIST_NM, JOB_CD_NM,
+            ENROL_QUALI_SEQ, ACABKG_CD, GRAD_EXPECT_YN, SEX_CD, AGE_CD, OVER_AGE, UNDER_AGE, CONDI_LIST, LANG_LIST, LICEN_LIST, eq.JOB_LIST AS PREF_JOB_LIST,
+            WORK_COND_SEQ, SAL_CD, MIN_SAL, MAX_SAL, WORK_PLACE, WORK_ADDR, SUBW_LINE_CD, SUBW_NM_CD, GATE_NUM, DIST_CD, WALFARE, SAL_DECI_AFTR_INV
+        FROM JOB_OPEN jo
+         LEFT OUTER JOIN JOB_AREA ja ON jo.JOB_OPEN_SEQ = ja.JOB_OPEN_SEQ
+         LEFT OUTER JOIN ENROL_QUALI eq ON jo.JOB_OPEN_SEQ = eq.JOB_OPEN_SEQ
+         LEFT OUTER JOIN WORK_COND wc ON jo.JOB_OPEN_SEQ = wc.JOB_OPEN_SEQ
+        WHERE
+         jo.JOB_OPEN_SEQ = #{jobOpenSeq}
+    </select>
+
+</mapper>
